@@ -2,29 +2,30 @@
 
 /**
  * array_to_avl - Builds an AVL tree from an array.
- * @array: A pointer to the first element of the array to be converted.
- * @size: The number of elements in @array.
  *
- * Return: A pointer to the root node of the created AVL, or NULL upon failure.
+ * @array: A pointer to the first element of the array to be converted.
+ * @size: The number of element in the array.
+ *
+ * Return: A pointer to the root node of the created AVL tree, NULL on failure.
  */
 avl_t *array_to_avl(int *array, size_t size)
 {
 	avl_t *tree = NULL;
-	size_t i, j;
+	size_t index, jndex;
 
 	if (array == NULL)
 		return (NULL);
 
-	for (i = 0; i < size; i++)
+	for (index = 0; index < size; index++)
 	{
-		for (j = 0; j < i; j++)
+		for (jndex = 0; jndex < index; jndex++)
 		{
-			if (array[j] == array[i])
+			if (array[jndex] == array[index])
 				break;
 		}
-		if (j == i)
+		if (jndex == index)
 		{
-			if (avl_insert(&tree, array[i]) == NULL)
+			if (avl_insert(&tree, array[index]) == NULL)
 				return (NULL);
 		}
 	}
